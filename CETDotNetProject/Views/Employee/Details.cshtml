@@ -1,0 +1,56 @@
+@model CETDotNetProject.Models.Employee
+
+@{
+    ViewData["Title"] = "Personel Detay";
+}
+
+<div class="container mt-4">
+    <h2>Personel Detay</h2>
+    <div>
+        <dl class="row">
+            <dt class="col-sm-3">Ad</dt>
+            <dd class="col-sm-9">@Model.FirstName</dd>
+            <dt class="col-sm-3">Soyad</dt>
+            <dd class="col-sm-9">@Model.LastName</dd>
+            <dt class="col-sm-3">E-posta</dt>
+            <dd class="col-sm-9">@Model.Email</dd>
+            <dt class="col-sm-3">Telefon</dt>
+            <dd class="col-sm-9">@Model.Phone</dd>
+            <dt class="col-sm-3">Departman</dt>
+            <dd class="col-sm-9">@Model.Department</dd>
+            <dt class="col-sm-3">İşe Başlama Tarihi</dt>
+            <dd class="col-sm-9">@Model.HireDate.ToShortDateString()</dd>
+            <dt class="col-sm-3">Maaş</dt>
+            <dd class="col-sm-9">@Model.Salary</dd>
+            <dt class="col-sm-3">Durum</dt>
+            <dd class="col-sm-9">@(Model.IsActive ? "Aktif" : "Pasif")</dd>
+        </dl>
+        <a asp-action="Index" class="btn btn-secondary">Listeye Dön</a>
+    </div>
+
+    <h4>İzinler</h4>
+    @if (Model.Leaves != null && Model.Leaves.Any())
+    {
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Başlangıç Tarihi</th>
+                    <th>Bitiş Tarihi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var leave in Model.Leaves)
+                {
+                    <tr>
+                        <td>@leave.StartDate.ToShortDateString()</td>
+                        <td>@leave.EndDate.ToShortDateString()</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Bu çalışanın kaydedilmiş izni yok.</p>
+    }
+</div> 

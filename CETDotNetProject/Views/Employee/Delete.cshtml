@@ -1,0 +1,27 @@
+@model CETDotNetProject.Models.Employee
+
+@{
+    ViewData["Title"] = "Personel Sil";
+}
+
+<div class="container mt-4">
+    <h2>Personel Sil</h2>
+    <h4>Bu personeli silmek istediğinize emin misiniz?</h4>
+    <div>
+        <dl class="row">
+            <dt class="col-sm-3">Ad</dt>
+            <dd class="col-sm-9">@Model.FirstName</dd>
+            <dt class="col-sm-3">Soyad</dt>
+            <dd class="col-sm-9">@Model.LastName</dd>
+            <dt class="col-sm-3">E-posta</dt>
+            <dd class="col-sm-9">@Model.Email</dd>
+            <dt class="col-sm-3">Departman</dt>
+            <dd class="col-sm-9">@Model.Department</dd>
+        </dl>
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <button type="submit" class="btn btn-danger">Sil</button>
+            <a asp-action="Index" class="btn btn-secondary">İptal</a>
+        </form>
+    </div>
+</div> 

@@ -1,0 +1,33 @@
+@model IEnumerable<CETDotNetProject.Models.Leave>
+
+@{
+    ViewData["Title"] = "İzin Listesi";
+}
+
+<div class="container mt-4">
+    <h2>İzin Listesi</h2>
+    <a asp-action="Create" class="btn btn-primary mb-3">Yeni İzin Ekle</a>
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Çalışan</th>
+                <th>Başlangıç Tarihi</th>
+                <th>Bitiş Tarihi</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Employee.FirstName @item.Employee.LastName</td>
+                    <td>@item.StartDate.ToShortDateString()</td>
+                    <td>@item.EndDate.ToShortDateString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div> 

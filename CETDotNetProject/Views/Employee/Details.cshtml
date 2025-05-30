@@ -27,30 +27,4 @@
         </dl>
         <a asp-action="Index" class="btn btn-secondary">Listeye Dön</a>
     </div>
-
-    <h4>İzinler</h4>
-    @if (Model.Leaves != null && Model.Leaves.Any())
-    {
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Başlangıç Tarihi</th>
-                    <th>Bitiş Tarihi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var leave in Model.Leaves)
-                {
-                    <tr>
-                        <td>@leave.StartDate.ToShortDateString()</td>
-                        <td>@leave.EndDate.ToShortDateString()</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    }
-    else
-    {
-        <p>Bu çalışanın kaydedilmiş izni yok.</p>
-    }
 </div> 

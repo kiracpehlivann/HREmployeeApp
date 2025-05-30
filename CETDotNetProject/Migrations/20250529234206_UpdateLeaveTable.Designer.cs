@@ -3,6 +3,7 @@ using System;
 using CETDotNetProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,34 +11,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CETDotNetProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250529234206_UpdateLeaveTable")]
+    partial class UpdateLeaveTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.5");
-
-            modelBuilder.Entity("CETDotNetProject.Models.Bonus", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("BonusDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("EmployeeId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EmployeeId");
-
-                    b.ToTable("Bonuses");
-                });
 
             modelBuilder.Entity("CETDotNetProject.Models.Employee", b =>
                 {
@@ -79,6 +60,28 @@ namespace CETDotNetProject.Migrations
                     b.ToTable("Employees");
                 });
 
+            modelBuilder.Entity("CETDotNetProject.Models.Leave", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.ToTable("Leaves");
+                });
+
             modelBuilder.Entity("CETDotNetProject.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -98,15 +101,20 @@ namespace CETDotNetProject.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("CETDotNetProject.Models.Bonus", b =>
+            modelBuilder.Entity("CETDotNetProject.Models.Leave", b =>
                 {
                     b.HasOne("CETDotNetProject.Models.Employee", "Employee")
-                        .WithMany()
+                        .WithMany("Leaves")
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Employee");
+                });
+
+            modelBuilder.Entity("CETDotNetProject.Models.Employee", b =>
+                {
+                    b.Navigation("Leaves");
                 });
 #pragma warning restore 612, 618
         }

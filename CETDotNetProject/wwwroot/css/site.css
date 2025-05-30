@@ -19,6 +19,95 @@ html {
 
 body {
   margin-bottom: 60px;
+  /* Add navy blue background */
+  background-color: #000080; /* Navy Blue */
+  color: #ffffff; /* White text for body */
+}
+
+/* Style the navigation bar */
+.navbar {
+    background-color: #001f3f !important; /* Darker Navy */
+    border-bottom: 1px solid #ffffff; /* White border */
+}
+
+.navbar-brand, .nav-link {
+    color: #ffffff !important; /* White text for links */
+}
+
+.navbar-brand:hover, .nav-link:hover {
+    color: #cccccc !important; /* Lighter white on hover */
+}
+
+/* Style headings */
+h1, h2, h3, h4, h5, h6 {
+    color: #ffffff; /* White headings */
+}
+
+/* Style tables for readability on dark background */
+.table {
+    color: #ffffff; /* White text for table */
+}
+
+.table th {
+    color: #ffffff; /* White color for table headers */
+    background-color: #001f3f; /* Darker navy background for headers */
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #001f3f; /* Darker navy for odd rows */
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+     background-color: #000080; /* Navy blue for even rows */
+}
+
+/* Style form elements */
+.form-control {
+    background-color: #001f3f; /* Darker navy for form input background */
+    color: #ffffff; /* White text for form input */
+    border: 1px solid #ffffff; /* White border for form input */
+}
+
+.form-control::placeholder {
+    color: #cccccc; /* Lighter white for placeholder text */
+}
+
+.form-control:focus {
+    border-color: #ffffff; /* White border on focus */
+    box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25); /* White shadow on focus */
+}
+
+.form-label {
+    color: #ffffff; /* White label text */
+}
+
+.btn-primary {
+    background-color: #ffffff; /* White background for primary button */
+    color: #000080; /* Navy blue text for primary button */
+    border-color: #ffffff; /* White border for primary button */
+}
+
+.btn-primary:hover {
+    background-color: #cccccc; /* Lighter white on hover */
+    color: #000080; /* Navy blue text on hover */
+    border-color: #cccccc; /* Lighter white border on hover */
+}
+
+.btn-secondary {
+    background-color: #001f3f; /* Darker navy for secondary button */
+    color: #ffffff; /* White text for secondary button */
+    border-color: #ffffff; /* White border for secondary button */
+}
+
+.btn-secondary:hover {
+    background-color: #000080; /* Navy blue on hover */
+    color: #ffffff; /* White text on hover */
+    border-color: #ffffff; /* White border on hover */
+}
+
+/* Style validation errors */
+.text-danger {
+    color: #ffcccc !important; /* Lighter red for errors */
 }
 
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
@@ -28,4 +117,20 @@ body {
 
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
+}
+
+.feature-text {
+    margin-bottom: 15px; /* Adjust spacing as needed */
+}
+
+.home-container {
+    background: linear-gradient(to bottom, #001f3f, #000080); /* Subtle navy gradient */
+    padding: 50px 0; /* Add some padding */
+    color: #ffffff; /* Ensure text is white on this background */
+}
+
+.home-content {
+    /* If you need to center the content within the container */
+    max-width: 800px; /* Adjust as needed */
+    margin: 0 auto; 
 }

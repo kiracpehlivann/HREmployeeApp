@@ -38,7 +38,5 @@ namespace CETDotNetProject.Models
 
         [Display(Name = "Aktif Mi?")]
         public bool IsActive { get; set; } = true;
-
-        public ICollection<Leave> Leaves { get; set; } = new List<Leave>();
     }
 } 

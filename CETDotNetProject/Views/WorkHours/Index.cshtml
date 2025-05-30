@@ -1,0 +1,46 @@
+@{
+    ViewData["Title"] = "Mesai Sayacı";
+}
+
+<div class="container mt-4">
+    <h2>Mesai Sayacı</h2>
+    <div>
+        <p>Başlangıç Saati: 09:00 TR</p>
+        <p>Bitiş Saati: 18:00 TR</p>
+        <p>Kalan Mesai Süresi: <span id="time-remaining">Hesaplanıyor...</span></p>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function updateWorkHoursTimer() {
+            const now = new Date();
+            const workEndTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 18, 0, 0); // 18:00 TR time
+
+            // Set timezone offset for TR time (UTC+3 for daylight saving, UTC+2 normally)
+            // This is a simplification; a more robust solution would use a timezone library
+            const trTimezoneOffset = -3 * 60; // Assuming UTC+3 for TR
+            const localTimezoneOffset = now.getTimezoneOffset();
+            const offsetDifference = localTimezoneOffset - trTimezoneOffset;
+            workEndTime.setTime(workEndTime.getTime() + (offsetDifference * 60 * 1000));
+
+            const timeDiff = workEndTime.getTime() - now.getTime();
+
+            if (timeDiff > 0) {
+                const hours = Math.floor(timeDiff / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+                document.getElementById('time-remaining').innerText = `${hours} saat ${minutes} dakika ${seconds} saniye`;
+            } else {
+                document.getElementById('time-remaining').innerText = "Mesai bitti!";
+            }
+        }
+
+        // Update timer every second
+        setInterval(updateWorkHoursTimer, 1000);
+
+        // Initial call to display time immediately
+        updateWorkHoursTimer();
+    </script>
+} 

@@ -1,12 +1,12 @@
-@model IEnumerable<CETDotNetProject.Models.Leave>
+@model IEnumerable<CETDotNetProject.Models.Bonus>
 
 @{
-    ViewData["Title"] = "İzin Listesi";
+    ViewData["Title"] = "Prim Listesi";
 }
 
 <div class="container mt-4">
-    <h2>İzin Listesi</h2>
-    <a asp-action="Create" class="btn btn-primary mb-3">Yeni İzin Ekle</a>
+    <h2>Prim Listesi</h2>
+    <a asp-action="Create" class="btn btn-primary mb-3">Yeni Prim Ekle</a>
     @if (TempData["Success"] != null)
     {
         <div class="alert alert-success">@TempData["Success"]</div>
@@ -15,8 +15,8 @@
         <thead>
             <tr>
                 <th>Çalışan</th>
-                <th>Başlangıç Tarihi</th>
-                <th>Bitiş Tarihi</th>
+                <th>Prim Tutarı</th>
+                <th>Prim Tarihi</th>
             </tr>
         </thead>
         <tbody>
@@ -24,8 +24,8 @@
             {
                 <tr>
                     <td>@item.Employee.FirstName @item.Employee.LastName</td>
-                    <td>@item.StartDate.ToShortDateString()</td>
-                    <td>@item.EndDate.ToShortDateString()</td>
+                    <td>@item.Amount</td>
+                    <td>@item.BonusDate.ToShortDateString()</td>
                 </tr>
             }
         </tbody>

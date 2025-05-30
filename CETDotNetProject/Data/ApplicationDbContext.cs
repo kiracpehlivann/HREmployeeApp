@@ -12,7 +12,7 @@ namespace CETDotNetProject.Data
 
         public DbSet<Employee> Employees { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<Leave> Leaves { get; set; }
+        public DbSet<Bonus> Bonuses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -1,0 +1,34 @@
+@model CETDotNetProject.Models.BonusViewModel
+
+@{
+    ViewData["Title"] = "Yeni Prim Ekle";
+}
+
+<div class="container mt-4">
+    <h2>Yeni Prim Ekle</h2>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <form asp-action="Create">
+        <div class="form-group mb-3">
+            <label asp-for="EmployeeId" class="control-label">Çalışan</label>
+            <select asp-for="EmployeeId" class="form-control" asp-items="Model.Employees">
+                <option value="">-- Çalışan Seçiniz --</option>
+            </select>
+            <span asp-validation-for="EmployeeId" class="text-danger"></span>
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="Amount" class="control-label"></label>
+            <input asp-for="Amount" class="form-control" type="number" step="0.01" />
+            <span asp-validation-for="Amount" class="text-danger"></span>
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="BonusDate" class="control-label"></label>
+            <input asp-for="BonusDate" class="form-control" type="date" />
+            <span asp-validation-for="BonusDate" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Kaydet</button>
+        <a asp-action="Index" class="btn btn-secondary">İptal</a>
+    </form>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} 

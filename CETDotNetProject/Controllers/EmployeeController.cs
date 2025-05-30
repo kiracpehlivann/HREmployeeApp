@@ -40,7 +40,6 @@ namespace CETDotNetProject.Controllers
             }
 
             var employee = await _context.Employees
-                .Include(e => e.Leaves)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (employee == null)
             {
